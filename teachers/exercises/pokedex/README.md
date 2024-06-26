@@ -54,6 +54,7 @@ Points cours à voir avec l'élève
 #### Etape 3 : on affihce les pokémons fetché dans le container en itérant dans le tableau
 
 - On créer un model html qui sera la structure de la carte pokémon
+  > Le model fonctionne exacetement comme le `<Composant/>` en React
 
 ```javascript
 const model = `

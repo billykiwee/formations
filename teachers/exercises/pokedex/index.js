@@ -22,18 +22,7 @@ const typesColor = {
   unknown: "#A8A77A",
 };
 
-/* 
-Etape 1 : on fetch la liste des nom de pokémon 
-
-La sortie ressemble à ça :
-  [
-    {
-      name: "bulbizar",
-      url: "https://pokeapi.co/api/v2/pokemon/1"
-    },
-    ...
-  ]
-*/
+// Etape 1
 async function getListPokemon() {
   const url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=50";
   return fetch(url)
@@ -51,24 +40,7 @@ async function getListPokemon() {
     });
 }
 
-/* 
-Etape 2 : on fetch les url de chaques pokémon quon récupére dans getListPokemon() 
-
-La sortie ressemble à ça :
-  [
-    {
-    abilities: [ [Object], [Object] ],
-      base_experience: 64,
-      cries: {
-        latest: 'https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/1.ogg',
-        legacy: 'https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/legacy/1.ogg'
-      },
-      forms: [ [Object] ],
-      ....
-    },
-    ...
-  ]
-*/
+// Etape 2
 async function fetchPokemons() {
   const listPokemons = await getListPokemon();
   const fetchedPokemon = [];
@@ -88,22 +60,7 @@ async function fetchPokemons() {
   return fetchedPokemon;
 }
 
-/* 
-Etape 3 : on affihce les pokémons fetché dans le container en itérant dans le tableau
-
- - On créer un model html qui sera la structure de la carte pokémon
-    const model = `
-      <img src="..." />
-      <span class="number">N°...</span>
-      <h3>...</h3>
-
-      <div class="types">
-        <span class="type" style="background-color: ..."/>
-        <span class="type" style="background-color: ..."/>
-      </div>
-    `;
-  - Ce model sera injecter dans une createElement("div") qui lui même sera injecter dans le container
-*/
+// Etape 3
 fetchPokemons().then((pokemons) => {
   const container = document.querySelector(".container");
 
